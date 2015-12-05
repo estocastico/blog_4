@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: "Welcome to Rails"
+  body: "Rails is such a nice web framework written in Ruby"
+  user_id: 1
+
+two:
+  title: "Rails, Beginning Rails 4"
+  body: "Rails is such a nice web framework written in Ruby"
+  user_id: 1
