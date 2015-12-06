@@ -21,7 +21,7 @@
   </div>
 
    <div class="field">
-    <%= f.collection_check_boxes :article_ids, @articles, :id, :title%>
+    <%= collection_check_boxes :articles_published, :article_ids, @articles, :id, :title%>
   </div>
 
   <div class="actions">
