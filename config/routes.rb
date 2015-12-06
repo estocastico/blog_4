@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'publications/index'
+
+  get 'publications/create'
+
   resources :users
   resources :articles
   # The priority is based upon order of creation: first created -> highest priority.

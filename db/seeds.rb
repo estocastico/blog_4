@@ -12,7 +12,8 @@ Article.delete_all
 #Users
 User.create([
   {name: "Alejo", email: "alejorodasvasquez@gmail.com"},
-  {name: "Luisa", email: "luisa@gmail.com"}
+  {name: "Luisa", email: "luisa@gmail.com"},
+  {name: "Laura", email: "laura@gmail.com"}
 ])
 
 #Articles
