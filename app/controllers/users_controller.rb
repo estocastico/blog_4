@@ -27,8 +27,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @publications = @user.publications.build(articles_published_params[:article_ids].map{|art| {article_id: art} unless art.to_s.empty?}.compact)
+    # I use @publications.each(&:save) to save an array (@publications) into the table
     respond_to do |format|
-      if @user.save
+      if @user.save && @publications.each(&:save)
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -70,6 +72,11 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :article_ids => [])
+      #params.require(:user).permit(:name, :email, :article_ids => [])
+      params.require(:user).permit(:name, :email)
+    end
+
+    def articles_published_params
+      params.require(:articles_published).permit(:article_ids => [])
     end
 end
