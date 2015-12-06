@@ -1,3 +1,4 @@
 class Article < ActiveRecord::Base
-  belongs_to :user
+  has_many :publications
+  has_many :users, through: :publications
 end
