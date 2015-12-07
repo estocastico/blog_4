@@ -20,9 +20,27 @@
     <%= f.text_field :email %>
   </div>
 
-   <div class="field">
-    <%= collection_check_boxes :articles_published, :article_ids, @articles, :id, :title%>
-  </div>
+  
+
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Body</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= check_box_tag  'articles_published[article_ids][]', article.id %></td>
+          <td><%= article.title %></td>
+          <td><%= article.body %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+   <br>
 
   <div class="actions">
     <%= f.submit %>
