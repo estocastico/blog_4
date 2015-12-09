@@ -27,10 +27,10 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    @publications = @user.publications.build(articles_published_params[:article_ids].map{|art| {article_id: art} unless art.to_s.empty?}.compact)
-    # I use @publications.each(&:save) to save an array (@publications) into the table
+    @user.add_publications(articles_published_params[:article_ids].map{|art| {article_id: art} unless art.to_s.empty?}.compact)
+
     respond_to do |format|
-      if @user.save && @publications.each(&:save)
+      if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
